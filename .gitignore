@@ -1,0 +1,39 @@
+# ========== Python ==========
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+*.pyd
+*.pyo
+*.sqlite3
+*.log
+*.bak
+
+# ========== Virtualenv / venv ==========
+venv/
+env/
+ENV/
+.venv/
+
+# ========== System pliki / śmieci ==========
+.DS_Store
+Thumbs.db
+
+# ========== Build / dist ==========
+build/
+dist/
+*.spec
+
+# ========== Testy / coverage ==========
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+pytest_cache/
+
+# ========== Node / frontend (jeśli masz) ==========
+node_modules/
+*.lock
