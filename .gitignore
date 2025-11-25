@@ -40,3 +40,6 @@ pytest_cache/
 # ========== Node / frontend ==========
 node_modules/
 *.lock
+
+# ========== Local references ==========
+ptech_references/
