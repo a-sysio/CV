@@ -18,8 +18,6 @@ CREATE TABLE me (
   phone VARCHAR(64),
   github VARCHAR(255),
   location VARCHAR(255),
-  about TEXT,
-  avatar_url VARCHAR(255)
 );
 
 CREATE TABLE skills (
@@ -73,8 +71,8 @@ CREATE TABLE social_media (
   label VARCHAR(255)
 );
 
-INSERT INTO me (full_name, title, email, phone, github, location, about, avatar_url) VALUES
-('Aleksander Sysio', 'Student (IT technician)', 'sysio.olek@gmail.com', '+48 535 354 547', 'https://github.com/a-sysio', 'Poland', 'In the field of IT, I am interested in web development, programming and 3D printing. I am passionate about sailing, chess, scouting and sports of all kinds. I learn quickly and enjoy working in a team and meeting new people.', '/static/profile.png');
+INSERT INTO me (full_name, title, email, phone, github, location) VALUES
+('Aleksander Sysio', 'Student (IT technician)', 'sysio.olek@gmail.com', '+48 535 354 547', 'https://github.com/a-sysio', 'Poland');
 
 INSERT INTO skills (name, category) VALUES
 ('HTML/CSS', 'tech'),
