@@ -118,4 +118,7 @@ INSERT INTO soft_skills (name) VALUES
 INSERT INTO social_media (platform, url, label) VALUES
 ('email', 'mailto:sysio.olek@gmail.com', 'sysio.olek@gmail.com'),
 ('phone', 'tel:+48535354547', '+48 535 354 547'),
-('github', 'https://github.com/a-sysio', 'github.com/a-sysio');
+('github', 'https://github.com/a-sysio', 'github.com/a-sysio'),
+('facebook', 'https://www.facebook.com/olek.sysio.5', 'facebook.com/olek.sysio.5'),
+('instagram', 'https://www.instagram.com/a.sysio/', 'instagram.com/a.sysio'),
+('linkedin', 'https://www.linkedin.com/feed/', 'linkedin.com');
