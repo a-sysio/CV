@@ -1,6 +1,7 @@
 CREATE DATABASE IF NOT EXISTS app;
 USE app;
 
+DROP TABLE IF EXISTS contact;
 DROP TABLE IF EXISTS me;
 DROP TABLE IF EXISTS skills;
 DROP TABLE IF EXISTS languages;
@@ -14,10 +15,14 @@ CREATE TABLE me (
   id INT PRIMARY KEY AUTO_INCREMENT,
   full_name VARCHAR(255) NOT NULL,
   title VARCHAR(255) NOT NULL,
-  email VARCHAR(255),
-  phone VARCHAR(64),
   github VARCHAR(255),
-  location VARCHAR(255),
+  location VARCHAR(255)
+);
+
+CREATE TABLE contact (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  email VARCHAR(255),
+  phone VARCHAR(64)
 );
 
 CREATE TABLE skills (
@@ -71,8 +76,11 @@ CREATE TABLE social_media (
   label VARCHAR(255)
 );
 
-INSERT INTO me (full_name, title, email, phone, github, location) VALUES
-('Aleksander Sysio', 'Student (IT technician)', 'sysio.olek@gmail.com', '+48 535 354 547', 'https://github.com/a-sysio', 'Poland');
+INSERT INTO me (full_name, title, github, location) VALUES
+('Aleksander Sysio', 'Student (IT technician)', 'https://github.com/a-sysio', 'Poland');
+
+INSERT INTO contact (email, phone) VALUES
+('sysio.olek@gmail.com', '+48 535 354 547');
 
 INSERT INTO skills (name, category) VALUES
 ('HTML/CSS', 'tech'),

@@ -3,6 +3,7 @@ Codex / dev notes (resume guide)
 
 Stan projektu:
 - Klon użytkownika: `./backend` to app Flask z endpointami `/all-data` (zbiera me/skills/languages/experience/education/certificates/soft_skills/social_media) i `/download-cv` (serwuje `static/cv.pdf`).
+- Kontakt: email/phone przeniesione do nowej tabeli `contact`, endpoint `/all-data` zwraca ją jako `contact`.
 - Dodane repo szkoleniowe obok: `./ptech-5`, `./ptech-5_backend`, `./ptech-5_frontend`, `./ptech-5_deployment` (referencje, nie modyfikować CV).
 - Baza: schema + seed w `backend/database.sql` (dane z PDF CV; avatar `/static/profile.png`), ładuje się automatycznie przez docker-entrypoint.
 

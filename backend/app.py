@@ -49,6 +49,9 @@ def all_data():
     cursor.execute("SELECT * FROM social_media ORDER BY id DESC")
     data['social_media'] = cursor.fetchall()
 
+    cursor.execute("SELECT * FROM contact ORDER BY id DESC")
+    data['contact'] = cursor.fetchall()
+
     # Zamykanie połączenia z bazą
     disconnect(db)
 

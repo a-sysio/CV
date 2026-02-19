@@ -28,6 +28,7 @@ const cards = [
 function App() {
   const { data, loading, error } = useData()
   const me = data?.me?.[0] || {}
+  const contact = data?.contact?.[0] || {}
   const [currentCard, setCurrentCard] = useState('about')
 
   const setCard = (id) => setCurrentCard(id)
@@ -113,7 +114,7 @@ function App() {
                 <SchoolOutlinedIcon className="card-icon" />
               </a>
               <a href="#skills" className="hero-card" onClick={() => setCard('skills')}>
-                <span>Skills</span>
+                <span>Skills&Projects</span>
                 <CodeOutlinedIcon className="card-icon" />
               </a>
               <a href="#experience" className="hero-card" onClick={() => setCard('experience')}>
@@ -149,7 +150,8 @@ function App() {
             <a className="social-circle" href="https://github.com/a-sysio" target="_blank" rel="noreferrer"><GitHubIcon/></a>
           </div>
           <div className="sidebar-contact">
-            <a>{me.email}</a>
+            <a>{contact.email}</a>
+            <a>{contact.phone}</a>
           </div>
           <a className="btn ghost sidebar-btn" href={downloadUrl} target="_blank" rel="noreferrer">
             Download CV
