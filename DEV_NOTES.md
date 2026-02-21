@@ -27,17 +27,14 @@ Frontend (Vite + React) – stan bieżący:
 Pliki kluczowe (frontend):
 - `frontend/src/App.jsx` — główny layout, nawigacja kart, render sekcji.
 - `frontend/src/App.css` — globalne style, układ, animacje mask reveal, watermark ikon.
-- `frontend/src/components/...` — komponenty
+- `frontend/src/components/...` — biór komponentów prezentacyjnych: `Projects`, `Languages`, `SocialMedia` `ContactList`, `Timeline`, `Section`, plus ewentualne tag/list helpers.
 - `frontend/src/hooks/useData.js` — fetch `/all-data`, eksport `downloadUrl`.
 - `frontend/src/main.jsx` — entry React/Vite, montuje App.
 - `frontend/vite.config.js` — konfiguracja Vite.
-- `frontend/src/components/` — zbiór komponentów prezentacyjnych: `Projects` (projekty), `Languages` (języki), `SocialMedia` (linki SM), `ContactList` (kontakt), `Timeline` (doświadczenie/edukacja), `Section` (nagłówek + dash), plus ewentualne tag/list helpers.
 
 Co dalej (plan):
-- Postawić frontend (np. Vite + React) w nowym katalogu `./frontend` obok backendu. Sekcje: Hero (avatar, imię, CTA download), About, Skills, Education, Experience, Certificates, Contact/Social, smooth scroll zamiast przeładowań. Kolorystyka biały/czerwony/czarny (jak PDF).
-- Na start można użyć danych statycznych lub pobierać z `http://localhost:3000/all-data` (CORS włączony).
-- Przycisk „Download CV” kierować do `/download-cv`.
-- Responsywność: kolumny na desktop, stacking na mobile; zadbać o anchor nawigację.
+- Mozliwość wyboru języka między polskim, a angielskim.
+- Sprawdzić skalowalność na róznych rozdzielczościach.
 
 Uwagi:
 - W terminalu lokalnym może pojawiać się `/bin/ps: Operation not permitted` z shellenv; listing działa, ignorować.
