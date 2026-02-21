@@ -52,6 +52,9 @@ def all_data():
     cursor.execute("SELECT * FROM contact ORDER BY id DESC")
     data['contact'] = cursor.fetchall()
 
+    cursor.execute("SELECT * FROM projects ORDER BY id ASC")
+    data['projects'] = cursor.fetchall()
+
     # Zamykanie połączenia z bazą
     disconnect(db)
 

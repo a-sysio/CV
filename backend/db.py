@@ -13,7 +13,10 @@ def connect():                     # Nawiązuje połączenie z bazą danych.
         user=DB_USER,
         password=DB_PASS,
         database=DB_NAME,
-        port=DB_PORT
+        port=DB_PORT,
+        charset="utf8mb4",
+        use_unicode=True,
+        collation="utf8mb4_unicode_ci"
     )
     return db
 

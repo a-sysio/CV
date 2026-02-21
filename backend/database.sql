@@ -1,5 +1,6 @@
-CREATE DATABASE IF NOT EXISTS app;
+CREATE DATABASE IF NOT EXISTS app CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE app;
+SET NAMES utf8mb4;
 
 DROP TABLE IF EXISTS contact;
 DROP TABLE IF EXISTS me;
@@ -21,8 +22,8 @@ CREATE TABLE me (
 
 CREATE TABLE contact (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  email VARCHAR(255),
-  phone VARCHAR(64)
+  platform VARCHAR(255),
+  value VARCHAR(64)
 );
 
 CREATE TABLE skills (
@@ -76,37 +77,47 @@ CREATE TABLE social_media (
   label VARCHAR(255)
 );
 
+CREATE TABLE projects (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  description TEXT,
+  github_link VARCHAR(255),
+  link VARCHAR(255),
+  tags TEXT
+);
+
 INSERT INTO me (full_name, title, github, location) VALUES
 ('Aleksander Sysio', 'Student (IT technician)', 'https://github.com/a-sysio', 'Poland');
 
-INSERT INTO contact (email, phone) VALUES
-('sysio.olek@gmail.com', '+48 535 354 547');
+INSERT INTO contact (platform, value) VALUES
+('email', 'sysio.olek@gmail.com'),
+('phone', '+48 535 354 547');
 
-INSERT INTO skills (name, category) VALUES
-('HTML/CSS', 'tech'),
-('JavaScript', 'tech'),
-('React', 'tech'),
-('Python', 'tech'),
-('SQL', 'tech'),
-('Hardware', 'tech'),
-('Flask', 'tech'),
-('Vue.js', 'tech'),
-('Node.js', 'tech'),
-('Docker', 'tech'),
-('Linux', 'tech'),
-('Git', 'tech');
+INSERT INTO skills (name) VALUES
+('HTML/CSS'),
+('JavaScript'),
+('React'),
+('Python'),
+('SQL'),
+('Hardware'),
+('Flask'),
+('Vue.js'),
+('Node.js'),
+('Docker'),
+('Linux'),
+('Git');
 
 INSERT INTO languages (name, level) VALUES
 ('English', 'C1'),
 ('Polish', 'Native');
 
 INSERT INTO experience (role, company, start_year, end_year, description, tags) VALUES
-('Group project on creating a website', 'Fujitsu Mentoring', '2022', '2024', 'Built a full-stack web project in a mentoring program.', 'Git, Flask, Scrum, Frontend, Backend'),
-('Internship', 'TomTom', '2023', NULL, 'Worked with Kotlin and Android Studio on hardware/software tasks.', 'Kotlin, Android Studio, Hardware, Software');
+('Group project on creating a website', 'Fujitsu Mentoring', '2022', '2024', 'Building a full-stack web project in a mentoring program.', 'Git, Flask, Scrum, Frontend, Backend'),
+('Internship', 'TomTom', '2023', NULL, 'Hardware/Software tasks and basics of Kotlin/Android Studio.', 'Hardware, Software, Kotlin, Android Studio');
 
 INSERT INTO education (school, program, start_year, end_year, description, tags) VALUES
-('Fujitsu P-Tech', 'Fujitsu IT training programme', '2020', '2025', 'DevOps, Cybersecurity, Clouds, Web development, Software, Hardware, Docker, AI plus soft-skills training.', 'DevOps, Cybersecurity, Clouds, Web development, Software, Hardware, Docker, AI, Marketing, Management, Communication, Critical Thinking, Multiculturalism in business'),
 ('Zespół Szkół Politechnicznych im. KEN', 'IT technician (5 grades)', '2020', '2025', 'Focus on IT programming, networks and databases.', 'IT, Programming, Networks, Databases'),
+('Fujitsu P-Tech', 'Fujitsu IT training programme', '2020', '2025', 'DevOps, Cybersecurity, Clouds, Web development, Software, Hardware, Docker, AI + soft-skills training.', 'DevOps, Cybersecurity, Clouds, Web development, Software, Hardware, Docker, AI, Marketing, Management, Communication, Critical Thinking'),
 ('WSB Academy', 'Computer science', '2025', 'now', 'Continuing studies in computer science.', 'IT, Cybersecurity, Projects, Web apps');
 
 INSERT INTO certificates (name, issuer, year) VALUES
@@ -120,13 +131,16 @@ INSERT INTO soft_skills (name) VALUES
 ('Teamwork'),
 ('Management'),
 ('Communication'),
-('Critical Thinking'),
-('Multiculturalism in business');
+('Critical Thinking');
 
 INSERT INTO social_media (platform, url, label) VALUES
-('email', 'mailto:sysio.olek@gmail.com', 'sysio.olek@gmail.com'),
-('phone', 'tel:+48535354547', '+48 535 354 547'),
 ('github', 'https://github.com/a-sysio', 'github.com/a-sysio'),
 ('facebook', 'https://www.facebook.com/olek.sysio.5', 'facebook.com/olek.sysio.5'),
 ('instagram', 'https://www.instagram.com/a.sysio/', 'instagram.com/a.sysio'),
 ('linkedin', 'https://www.linkedin.com/feed/', 'linkedin.com');
+
+INSERT INTO projects (title, description, github_link, link, tags) VALUES
+('TomTom Map', 'Prototype mapping/tooling app created during TomTom internship.', 'https://github.com/a-sysio/tomtom-map', NULL, 'Kotlin, Android Studio'),
+('P-Tech 3', 'Fujitsu P-Tech year-3 project: web app built as part of the program.', 'https://github.com/a-sysio/ptech-3', NULL, 'React, Node.js, MySQL'),
+('P-Tech 5', 'Fujitsu P-Tech final capstone project with full-stack features.', 'https://github.com/a-sysio/ptech-5', NULL, 'Vue.js, Flask, Docker'),
+('CV', 'A personal CV website built with React and Flask, showcasing my skills and experience.', 'https://github.com/a-sysio/CV', 'in progres...', 'React, Flask, HTML/CSS, Python, MySQL, Docker');

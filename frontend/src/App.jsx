@@ -2,8 +2,9 @@ import { useState } from 'react'
 import './App.css'
 import ContactList from './components/ContactList'
 import Section from './components/Section'
-import Skills from './components/Skills'
+import Projects from './components/Projects'
 import Timeline from './components/Timeline'
+import SocialMedia from './components/SocialMedia'
 import { downloadUrl, useData } from './hooks/useData'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined'
@@ -16,11 +17,12 @@ import FacebookTwoToneIcon from '@mui/icons-material/FacebookTwoTone';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import Languages from './components/Languages'
 
 const cards = [
   { id: 'about', label: 'About me', icon: <PersonOutlineOutlinedIcon fontSize="inherit" /> },
   { id: 'education', label: 'Education', icon: <SchoolOutlinedIcon fontSize="inherit" /> },
-  { id: 'skills', label: 'Skills', icon: <CodeOutlinedIcon fontSize="inherit" /> },
+  { id: 'projects', label: 'Projects', icon: <CodeOutlinedIcon fontSize="inherit" /> },
   { id: 'experience', label: 'Experience', icon: <WorkOutlineIcon fontSize="inherit" /> },
   { id: 'contact', label: 'Contact', icon: <MailOutlineIcon fontSize="inherit" /> },
 ]
@@ -28,16 +30,22 @@ const cards = [
 function App() {
   const { data, loading, error } = useData()
   const me = data?.me?.[0] || {}
-  const contact = data?.contact?.[0] || {}
+  const contactList = data?.contact || []
+  const socialMediaList = data?.social_media || []
+  const contactEmail = contactList.find((c) => c.platform === 'email')?.value
+  const contactPhone = contactList.find((c) => c.platform === 'phone')?.value
   const [currentCard, setCurrentCard] = useState('about')
+  const [animDirection, setAnimDirection] = useState('forward')
 
   const setCard = (id) => setCurrentCard(id)
   const next = () => {
     const idx = cards.findIndex((c) => c.id === currentCard)
+    setAnimDirection('forward')
     setCard(cards[(idx + 1) % cards.length].id)
   }
   const prev = () => {
     const idx = cards.findIndex((c) => c.id === currentCard)
+    setAnimDirection('backward')
     setCard(cards[(idx - 1 + cards.length) % cards.length].id)
   }
 
@@ -57,29 +65,46 @@ function App() {
 
       case 'education':
         return (
+          <>
           <Section id="education" title="Education">
             <div className="timeline-scroll">
               <Timeline items={data?.education || []} />
             </div>
-          </Section>
+          </Section>        
+          </>
         )
 
-      case 'skills':
+      case 'projects':
         return (
-          <Section id="skills" title="Skills">
-            <div className="timeline-scroll">
-              <Skills skills={data?.skills} languages={data?.languages} />
+          <>
+          <Section id="languages" title="Languages">
+            <div className='timeline-scroll'>
+              <Languages items={data?.languages || []} />
             </div>
           </Section>
+          
+          <Section id="projects" title="Projects">
+            <div className="timeline-scroll">
+              <Projects projects={data?.projects || []} />
+            </div>
+          </Section>
+          </>
         )
 
       case 'contact':
         return (
+          <>
           <Section id="contact" title="Contact">
             <div className="timeline-scroll">
-              <ContactList items={data?.social_media || []} large />
+              <ContactList items={contactList} />
             </div>
           </Section>
+          <Section id="contact" title="Social Media">
+            <div className="timeline-scroll">
+              <SocialMedia items={socialMediaList} />
+            </div>
+          </Section>
+          </>
         )
       case 'about':
       default:
@@ -113,8 +138,8 @@ function App() {
                 <span>Education</span>
                 <SchoolOutlinedIcon className="card-icon" />
               </a>
-              <a href="#skills" className="hero-card" onClick={() => setCard('skills')}>
-                <span>Skills&Projects</span>
+              <a href="#projects" className="hero-card" onClick={() => setCard('projects')}>
+                <span>Skills & Projects</span>
                 <CodeOutlinedIcon className="card-icon" />
               </a>
               <a href="#experience" className="hero-card" onClick={() => setCard('experience')}>
@@ -150,8 +175,8 @@ function App() {
             <a className="social-circle" href="https://github.com/a-sysio" target="_blank" rel="noreferrer"><GitHubIcon/></a>
           </div>
           <div className="sidebar-contact">
-            <a>{contact.email}</a>
-            <a>{contact.phone}</a>
+            {contactEmail && <a>{contactEmail}<br /></a>}
+            {contactPhone && <a>{contactPhone}</a>}
           </div>
           <a className="btn ghost sidebar-btn" href={downloadUrl} target="_blank" rel="noreferrer">
             Download CV
@@ -161,7 +186,11 @@ function App() {
 
         <main className="content">
           <div className="top-row">
-            <div className="hero-main-block">{renderCard()}</div>
+            <div className={`hero-main-block ${currentCard}`}>
+              <div key={currentCard} className={`card-anim ${animDirection}`}>
+                {renderCard()}
+              </div>
+            </div>
             
             <div className="toolbar">
               <div className="toolbar-icons">

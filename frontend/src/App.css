@@ -26,7 +26,6 @@
   grid-template-columns: 320px 1fr;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   }
 
@@ -115,6 +114,7 @@
   justify-content: center;
   color: #eef6f5;
   border-color: rgba(255, 255, 255, 0.5);
+  margin-top: 5%;
 }
 
 .copyright {
@@ -131,7 +131,7 @@
   flex-direction: column;
   gap: 0;
   height: 100%;
-overflow: hidden;
+  overflow: hidden;
 }
 
 .top-row {
@@ -186,6 +186,40 @@ overflow: hidden;
   flex-direction: column;
 }
 
+.hero-main-block.education {
+  padding-bottom: 100x;
+}
+
+.card-anim {
+  width: 100%;
+  overflow: hidden;
+}
+
+.card-anim.forward {
+  animation: maskReveal 500ms ease both;
+}
+
+.card-anim.backward {
+  animation: maskRevealReverse 500ms ease both;
+}
+
+@keyframes maskReveal {
+  from { opacity: 0; transform: translateX(12px); }
+  50%  { opacity: 1; }
+  to   { transform: translateX(0); }
+}
+
+@keyframes maskRevealReverse {
+  from { opacity: 0; transform: translateX(-12px); }
+  50%  { opacity: 1; }
+  to   { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-anim { animation: none; }
+}
+
+
 
 .hero-actions {
   display: flex;
@@ -230,7 +264,6 @@ overflow: hidden;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 16px 60px rgba(0, 0, 0, 0.15);
   justify-self: end;
 }
 
@@ -339,7 +372,6 @@ overflow: hidden;
   grid-template-columns: 70px 1fr;
   align-items: flex-start;
   padding: 12px 14px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
 }
 
 .stat-icon svg {
@@ -371,7 +403,6 @@ overflow: hidden;
   background: #fff;
   border-radius: 12px;
   padding: 22px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
   border: 1px solid #f0f1f3;
 }
 
@@ -444,7 +475,6 @@ overflow: hidden;
   border: 1px solid #eee;
   border-radius: 14px;
   background: #fff;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
 }
 
 .card-header {
@@ -529,6 +559,10 @@ overflow: hidden;
   overflow-x: hidden;
 }
 
+.hero-main-block.education .timeline-scroll {
+  max-height: 64vh;
+}
+
 .hero-nav {
   margin-top: 30px;
   width: 100%;
@@ -555,7 +589,6 @@ overflow: hidden;
 .hero-card:hover {
   border-color: #e53935;
   transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 .card-icon {
@@ -574,3 +607,48 @@ overflow: hidden;
   transform: translate(40%, 40%) scale(1.04);
 }
 
+.hero-main-block.projects .timeline-scroll {
+  max-height: 45vh;
+}
+
+.languages {
+  display: flex;
+  flex-direction: row;
+  gap: 10px
+}
+
+.projects-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.project-card {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  background: #fff;
+  
+}
+
+.project-info h3 {
+  margin: 0 0 6px;
+}
+
+.project-info p {
+  margin: 0;
+  color: #555;
+  line-height: 1.5;
+}
+
+.project-tags {
+  align-self: center;
+}
+
+@media (max-width: 700px) {
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+}
