@@ -35,6 +35,7 @@ Pliki kluczowe (frontend):
 Co dalej (plan):
 - Mozliwość wyboru języka między polskim, a angielskim.
 - Sprawdzić skalowalność na róznych rozdzielczościach.
+- Upublicznyć CV
 
 Uwagi:
 - W terminalu lokalnym może pojawiać się `/bin/ps: Operation not permitted` z shellenv; listing działa, ignorować.
