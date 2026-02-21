@@ -25,10 +25,17 @@ Frontend (Vite + React) – stan bieżący:
 - Uruchomienie: w `frontend` `npm install` i `npm run dev` (port 5173). API domyślnie `http://localhost:3000/all-data`.
 
 Pliki kluczowe (frontend):
-- `frontend/src/App.jsx`, `frontend/src/App.css`
-- Komponenty: `frontend/src/components/Projects.jsx`, `Languages.jsx`, `SocialMedia.jsx`, `ContactList.jsx`, `Timeline.jsx`, `Section.jsx`
-- Hook/API: `frontend/src/hooks/useData.js`
-- Entry/build: `frontend/src/main.jsx`, `frontend/vite.config.js`
+- `frontend/src/App.jsx` — główny layout, nawigacja kart, render sekcji.
+- `frontend/src/App.css` — globalne style, układ, animacje mask reveal, watermark ikon.
+- `frontend/src/components/Projects.jsx` — lista projektów (title/description/link/tags) z API `projects`.
+- `frontend/src/components/Languages.jsx` — wyświetla języki z `languages`.
+- `frontend/src/components/SocialMedia.jsx` — linki social media.
+- `frontend/src/components/ContactList.jsx` — dane z tabeli `contact` (email/phone).
+- `frontend/src/components/Timeline.jsx` — renderuje experience/education z tagami.
+- `frontend/src/components/Section.jsx` — wrapper sekcji z nagłówkiem i dash.
+- `frontend/src/hooks/useData.js` — fetch `/all-data`, eksport `downloadUrl`.
+- `frontend/src/main.jsx` — entry React/Vite, montuje App.
+- `frontend/vite.config.js` — konfiguracja Vite.
 
 Co dalej (plan):
 - Postawić frontend (np. Vite + React) w nowym katalogu `./frontend` obok backendu. Sekcje: Hero (avatar, imię, CTA download), About, Skills, Education, Experience, Certificates, Contact/Social, smooth scroll zamiast przeładowań. Kolorystyka biały/czerwony/czarny (jak PDF).
