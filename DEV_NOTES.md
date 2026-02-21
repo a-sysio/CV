@@ -1,11 +1,11 @@
-Codex / dev notes (resume guide)
+Dev Notes
 ================================
 
-Stan projektu:
-- Klon użytkownika: `./backend` to app Flask z endpointami `/all-data` (zbiera me/skills/languages/experience/education/certificates/soft_skills/social_media) i `/download-cv` (serwuje `static/cv.pdf`).
-- Kontakt: email/phone przeniesione do nowej tabeli `contact`, endpoint `/all-data` zwraca ją jako `contact`.
-- Dodane repo szkoleniowe obok: `./ptech-5`, `./ptech-5_backend`, `./ptech-5_frontend`, `./ptech-5_deployment` (referencje, nie modyfikować CV).
-- Baza: schema + seed w `backend/database.sql` (dane z PDF CV; avatar `/static/profile.png`), ładuje się automatycznie przez docker-entrypoint.
+Technikalia projektu:
+- Klon użytkownika: `./backend` to app Flask z endpointami `/all-data` (zbiera me/skills/languages/experience/education/certificates/soft_skills/social_media/contact/projects) i `/download-cv` (serwuje `static/cv.pdf`).
+- Projekty: nowa tabela `projects` (title/description/github_link/link/tags) seedowana w `database.sql` (CV, PTech 3, PTech 5, TomTom Map).
+- Dodane repo szkoleniowe obok: `./ptech-5`, `./ptech-5_backend`, `./ptech-5_frontend`, `./ptech-5_deployment`.
+- Baza: schema + seed w `backend/database.sql`, ładuje się automatycznie przez docker-entrypoint.
 
 Docker / uruchomienie backendu:
 - W `backend`: `docker compose up -d` (Docker Desktop musi być running).
@@ -13,12 +13,22 @@ Docker / uruchomienie backendu:
 - DB creds: host `db` (z hosta: localhost:6033), user `user`, pass `password`, db `app`.
 - Sprawdzenie: `http://localhost:3000/all-data`, `http://localhost:3000/download-cv`, phpMyAdmin `http://localhost:8081` (login user/password, host db).
 
-Pliki kluczowe:
-- `backend/app.py` — prosty agregator `/all-data`, download CV.
-- `backend/db.py` — connector MySQL (env: DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT).
+Pliki kluczowe (backend):
+- `backend/app.py` — agregator `/all-data`, download CV (zwraca też `projects`).
+- `backend/db.py` — connector MySQL (env: DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT) z UTF8MB4.
 - `backend/compose.yaml` — server + MySQL + phpMyAdmin + seeding z `database.sql`.
 - `backend/Dockerfile` — gunicorn na porcie 3000; `backend/requirements.txt` zawiera gunicorn.
 - `backend/static/` — `cv.pdf`, `profile.png`.
+
+Frontend (Vite + React) – stan bieżący:
+- Nawigacja hero: karty Experience/Education/Projects/Contact z ikonami MUI; animacje mask reveal zależne od kierunku (strzałki).
+- Uruchomienie: w `frontend` `npm install` i `npm run dev` (port 5173). API domyślnie `http://localhost:3000/all-data`.
+
+Pliki kluczowe (frontend):
+- `frontend/src/App.jsx`, `frontend/src/App.css`
+- Komponenty: `frontend/src/components/Projects.jsx`, `Languages.jsx`, `SocialMedia.jsx`, `ContactList.jsx`, `Timeline.jsx`, `Section.jsx`
+- Hook/API: `frontend/src/hooks/useData.js`
+- Entry/build: `frontend/src/main.jsx`, `frontend/vite.config.js`
 
 Co dalej (plan):
 - Postawić frontend (np. Vite + React) w nowym katalogu `./frontend` obok backendu. Sekcje: Hero (avatar, imię, CTA download), About, Skills, Education, Experience, Certificates, Contact/Social, smooth scroll zamiast przeładowań. Kolorystyka biały/czerwony/czarny (jak PDF).
@@ -26,12 +36,6 @@ Co dalej (plan):
 - Przycisk „Download CV” kierować do `/download-cv`.
 - Responsywność: kolumny na desktop, stacking na mobile; zadbać o anchor nawigację.
 
-Frontend (Vite + React) – stan bieżący:
-- Nowy projekt w `./frontend` (Vite + React). Ikony Material UI, hero nawigacja z czterema kartami (Experience/Education/Skills/Contact) z ikonami-wodnym znakiem (opacity hover, lift). Toolbar w main-card używa ikon MUI.
-- Style: `.card-icon` pozycjonowana bliżej środka (translate 40%, 40%), stabilizacja layoutu przez `:root { scrollbar-gutter: stable; }` i `body { overflow-y: scroll; }`, większe paddings strony, sidebar z zaokrągleniami i większym avatarem.
-- Uruchomienie: w `frontend` `npm install` (pakiety Vite + MUI icons) i `npm run dev` (domyślnie port 5173). API można wskazać na backend `http://localhost:3000/all-data` według potrzeb w hookach.
-- Główne pliki frontu: `src/App.jsx`, `src/App.css`, `src/components/*`, `src/hooks/useData`. Kolor przewodni: `rgb(255, 49, 48)`.
-
-Uwaga:
+Uwagi:
 - W terminalu lokalnym może pojawiać się `/bin/ps: Operation not permitted` z shellenv; listing działa, ignorować.
 - Repozytoria referencyjne p-tech są przeniesione do `./ptech_references/` (ptech-5, ptech-5_frontend, ptech-5_backend, ptech-5_deployment).
