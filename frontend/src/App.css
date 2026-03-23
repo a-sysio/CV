@@ -19,16 +19,15 @@
 .main-card {
   position: relative;
   z-index: 1;
-  width: min(1180px, 100%);
+  width: min(1400px, 96vw);
   min-height: 700px;
-  min-width: 1300px;
+  min-width: 0;
   display: grid;
   grid-template-columns: 320px 1fr;
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
   }
-
 
 .sidebar {
   background: rgba(255, 49, 48);
@@ -130,13 +129,13 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  height: 100%;
+    height: 100%;
   overflow: hidden;
 }
 
 .top-row {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr 60px;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 25px;
   height: 100%;
   align-items: flex-start;
@@ -145,27 +144,36 @@
 .hero-about{
   display: flex;
   flex-direction: row;
-  gap: 50px;
+  align-items: center;
+  gap: clamp(24px, 3vw, 50px);
+}
+
+.hero-main {
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .hero-main h1 {
   margin: 6px 0;
-  font-size: 36px;
+  font-size: clamp(36px, 2.2vw, 48px);
   letter-spacing: -0.5px;
   color: #222;
+  line-height: 1.05;
 }
 
 .name {
   color: #222;
   font-weight: 700;
   margin: 0 0 0;
-  max-height: 40px;
 }
 
 .title {
+  display: block;
   color: rgba(255, 49, 48);
   font-weight: 700;
-  margin: 0 0 14px 10px;
+  font-size: clamp(18px, 1vw + 10px, 24px);
+  line-height: 1.15;
+  margin: 0px 0 14px 10px;
 }
 
 .name-title {
@@ -176,18 +184,19 @@
 
 .hero-main .body {
   color: #777;
-  max-width: 440px;
+  max-width: min(62ch, 100%);
 }
 
 .hero-main-block {
-  width: 102vh;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .hero-main-block.education {
-  padding-bottom: 100x;
+  padding-bottom: 0;
 }
 
 .card-anim {
@@ -218,8 +227,6 @@
 @media (prefers-reduced-motion: reduce) {
   .card-anim { animation: none; }
 }
-
-
 
 .hero-actions {
   display: flex;
@@ -259,7 +266,8 @@
 
 .hero-photo {
   position: relative;
-  width: 380px;
+  flex: 0 0 clamp(280px, 28vw, 380px);
+  width: clamp(280px, 28vw, 380px);
   max-width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
@@ -276,13 +284,14 @@
 .toolbar {
   position: relative;
   height: 100%;
-  width: 80px;
+  width: 72px;
   border-left: 1px solid #f1f1f1;
   display: grid;
   grid-template-rows: 1fr auto;
   justify-items: center;
   padding: 12px 0;
   margin-right: 0px;
+  flex-shrink: 0;
 }
 
 .toolbar-icons {
@@ -514,6 +523,7 @@
 @media (max-width: 1100px) {
   .main-card {
     grid-template-columns: 1fr;
+    width: min(1100px, 100%);
   }
   .sidebar {
     order: -1;
@@ -554,13 +564,9 @@
 }
 
 .timeline-scroll {
-  max-height: 60vh;
+  max-height: 56vh;
   overflow-y: auto;
   overflow-x: hidden;
-}
-
-.hero-main-block.education .timeline-scroll {
-  max-height: 64vh;
 }
 
 .hero-nav {
@@ -607,10 +613,6 @@
   transform: translate(40%, 40%) scale(1.04);
 }
 
-.hero-main-block.projects .timeline-scroll {
-  max-height: 45vh;
-}
-
 .languages {
   display: flex;
   flex-direction: row;
@@ -630,7 +632,6 @@
   border: 1px solid #e5e5e5;
   border-radius: 12px;
   background: #fff;
-  
 }
 
 .project-info h3 {
