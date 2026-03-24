@@ -2,6 +2,7 @@ services:
   - type: web
     name: cv-backend
     runtime: python
+    plan: free
     rootDir: backend
     buildCommand: pip install -r requirements.txt
     preDeployCommand: python init_db.py
@@ -29,5 +30,6 @@ services:
 
 databases:
   - name: cv-db
+    plan: free
     databaseName: app
     user: user
