@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:3000'
+const API_BASE = import.meta.env.VITE_API_BASE || (import.meta.env.DEV ? 'http://localhost:3000' : '')
 
 export const downloadUrl = `${API_BASE}/download-cv`
 

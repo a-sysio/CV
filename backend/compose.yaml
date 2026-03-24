@@ -16,38 +16,44 @@ services:
       - DB_USER=user
       - DB_PASS=password
       - DB_NAME=app
-      - DB_PORT=3306
+      - DB_PORT=5432
+      - DB_CONNECT_RETRIES=20
+      - DB_CONNECT_DELAY=1.5
     ports:
       - "3000:3000"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   db:
-    image: mysql:8.0
+    image: postgres:15
     container_name: cv-db
     environment:
-      MYSQL_ROOT_PASSWORD: my_secret_password
-      MYSQL_DATABASE: app
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: app
     ports:
-      - "6033:3306"
+      - "5432:5432"
     volumes:
-      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
-      - dbdata:/var/lib/mysql
+      - ./database.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - dbdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d app"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: cv-pma
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: cv-pgadmin
     depends_on:
       - db
     environment:
-      PMA_HOST: db
-      PMA_PORT: 3306
-      PMA_ARBITRARY: 1
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
     restart: always
     ports:
-      - "8081:80"
+      - "5050:80"
 
 volumes:
   dbdata:

@@ -1,24 +1,47 @@
-import mysql.connector  # Importuje bibliotekę do obsługi MySQL
-import os  # Importuje moduł do obsługi zmiennych środowiskowych
+import os
+import time
 
-DB_HOST = os.getenv('DB_HOST', 'localhost')  # Adres hosta bazy danych
-DB_USER = os.getenv('DB_USER', 'user')       # Nazwa użytkownika bazy danych
-DB_PASS = os.getenv('DB_PASS', 'password')   # Hasło do bazy danych
-DB_NAME = os.getenv('DB_NAME', 'app')        # Nazwa bazy danych
-DB_PORT = int(os.getenv('DB_PORT', 3306))         # Port bazy danych
+import psycopg2
+from psycopg2.extras import RealDictCursor
+from psycopg2.extensions import parse_dsn
 
-def connect():                     # Nawiązuje połączenie z bazą danych.
-    db = mysql.connector.connect(  # Zwraca obiekt połączenia.
-        host=DB_HOST,
-        user=DB_USER,
-        password=DB_PASS,
-        database=DB_NAME,
-        port=DB_PORT,
-        charset="utf8mb4",
-        use_unicode=True,
-        collation="utf8mb4_unicode_ci"
-    )
-    return db
+DATABASE_URL = os.getenv("DATABASE_URL")
+DB_HOST = os.getenv("DB_HOST", "localhost")
+DB_USER = os.getenv("DB_USER", "user")
+DB_PASS = os.getenv("DB_PASS", "password")
+DB_NAME = os.getenv("DB_NAME", "app")
+DB_PORT = int(os.getenv("DB_PORT", 5432))
+DB_CONNECT_RETRIES = int(os.getenv("DB_CONNECT_RETRIES", 10))
+DB_CONNECT_DELAY = float(os.getenv("DB_CONNECT_DELAY", 1.5))
 
-def disconnect(db):  # Zamyka połączenie z bazą danych.
+
+def connect():
+    last_error = None
+
+    for _ in range(DB_CONNECT_RETRIES):
+        try:
+            if DATABASE_URL:
+                connect_kwargs = parse_dsn(DATABASE_URL)
+                connect_kwargs.setdefault("sslmode", os.getenv("DB_SSLMODE", "require"))
+                return psycopg2.connect(**connect_kwargs)
+
+            return psycopg2.connect(
+                host=DB_HOST,
+                user=DB_USER,
+                password=DB_PASS,
+                dbname=DB_NAME,
+                port=DB_PORT,
+            )
+        except psycopg2.OperationalError as error:
+            last_error = error
+            time.sleep(DB_CONNECT_DELAY)
+
+    raise last_error
+
+
+def dict_cursor(db):
+    return db.cursor(cursor_factory=RealDictCursor)
+
+
+def disconnect(db):
     db.close()

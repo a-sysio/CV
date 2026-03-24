@@ -1,8 +1,4 @@
-CREATE DATABASE IF NOT EXISTS app CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE app;
-SET NAMES utf8mb4;
-
-DROP TABLE IF EXISTS contact;
+DROP TABLE IF EXISTS contact CASCADE;
 DROP TABLE IF EXISTS me;
 DROP TABLE IF EXISTS skills;
 DROP TABLE IF EXISTS languages;
@@ -13,7 +9,7 @@ DROP TABLE IF EXISTS soft_skills;
 DROP TABLE IF EXISTS social_media;
 
 CREATE TABLE me (
-  id INT PRIMARY KEY AUTO_INCREMENT,
+  id SERIAL PRIMARY KEY,
   full_name VARCHAR(255) NOT NULL,
   title VARCHAR(255) NOT NULL,
   github VARCHAR(255),
@@ -21,25 +17,25 @@ CREATE TABLE me (
 );
 
 CREATE TABLE contact (
-  id INT PRIMARY KEY AUTO_INCREMENT,
+  id SERIAL PRIMARY KEY,
   platform VARCHAR(255),
   value VARCHAR(64)
 );
 
 CREATE TABLE skills (
-  id INT PRIMARY KEY AUTO_INCREMENT,
+  id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   category VARCHAR(64) DEFAULT 'tech'
 );
 
 CREATE TABLE languages (
-  id INT PRIMARY KEY AUTO_INCREMENT,
+  id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   level VARCHAR(128) NOT NULL
 );
 
 CREATE TABLE experience (
-  id INT PRIMARY KEY AUTO_INCREMENT,
+  id SERIAL PRIMARY KEY,
   role VARCHAR(255) NOT NULL,
   company VARCHAR(255) NOT NULL,
   start_year VARCHAR(16),
@@ -49,7 +45,7 @@ CREATE TABLE experience (
 );
 
 CREATE TABLE education (
-  id INT PRIMARY KEY AUTO_INCREMENT,
+  id SERIAL PRIMARY KEY,
   school VARCHAR(255) NOT NULL,
   program VARCHAR(255) NOT NULL,
   start_year VARCHAR(16),
@@ -59,26 +55,26 @@ CREATE TABLE education (
 );
 
 CREATE TABLE certificates (
-  id INT PRIMARY KEY AUTO_INCREMENT,
+  id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   issuer VARCHAR(255),
   year VARCHAR(16)
 );
 
 CREATE TABLE soft_skills (
-  id INT PRIMARY KEY AUTO_INCREMENT,
+  id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE social_media (
-  id INT PRIMARY KEY AUTO_INCREMENT,
+  id SERIAL PRIMARY KEY,
   platform VARCHAR(64) NOT NULL,
   url VARCHAR(255),
   label VARCHAR(255)
 );
 
 CREATE TABLE projects (
-  id INT PRIMARY KEY AUTO_INCREMENT,
+  id SERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
   description TEXT,
   github_link VARCHAR(255),
@@ -143,4 +139,4 @@ INSERT INTO projects (title, description, github_link, link, tags) VALUES
 ('TomTom Map', 'Prototype mapping/tooling app created during TomTom internship.', 'https://github.com/a-sysio/TomTom_Map', NULL, 'Kotlin, Android Studio'),
 ('P-Tech 3', 'Fujitsu P-Tech year-3 project: web app built as part of the program.', 'https://github.com/a-sysio/ptech-3', NULL, 'React, Node.js, MySQL'),
 ('P-Tech 5', 'Fujitsu P-Tech final capstone project with full-stack features.', 'https://github.com/a-sysio/ptech-5', NULL, 'Vue.js, Flask, Docker'),
-('CV', 'A personal CV website built with React and Flask, showcasing my skills and experience.', 'https://github.com/a-sysio/CV', 'in progres...', 'React, Flask, HTML/CSS, Python, MySQL, Docker');
+('CV', 'A personal CV website built with React and Flask, showcasing my skills and experience.', 'https://github.com/a-sysio/CV', 'in progres...', 'React, Flask, HTML/CSS, Python, PostgresSQL, Docker');
