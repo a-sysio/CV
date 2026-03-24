@@ -125,7 +125,7 @@
 
 .content {
   position: relative;
-  padding: 20px 24px;
+  padding: 20px 0 20px 24px;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -136,8 +136,9 @@
 .top-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 25px;
+  gap: 18px;
   height: 100%;
+  width: 100%;
   align-items: flex-start;
   }
 
@@ -564,9 +565,13 @@
 }
 
 .timeline-scroll {
-  max-height: 56vh;
+  max-height: 64vh;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.projects-tab .timeline-scroll {
+  max-height: 45vh;
 }
 
 .hero-nav {

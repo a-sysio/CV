@@ -140,7 +140,7 @@ INSERT INTO social_media (platform, url, label) VALUES
 ('linkedin', 'https://www.linkedin.com/feed/', 'linkedin.com');
 
 INSERT INTO projects (title, description, github_link, link, tags) VALUES
-('TomTom Map', 'Prototype mapping/tooling app created during TomTom internship.', 'https://github.com/a-sysio/tomtom-map', NULL, 'Kotlin, Android Studio'),
+('TomTom Map', 'Prototype mapping/tooling app created during TomTom internship.', 'https://github.com/a-sysio/TomTom_Map', NULL, 'Kotlin, Android Studio'),
 ('P-Tech 3', 'Fujitsu P-Tech year-3 project: web app built as part of the program.', 'https://github.com/a-sysio/ptech-3', NULL, 'React, Node.js, MySQL'),
 ('P-Tech 5', 'Fujitsu P-Tech final capstone project with full-stack features.', 'https://github.com/a-sysio/ptech-5', NULL, 'Vue.js, Flask, Docker'),
 ('CV', 'A personal CV website built with React and Flask, showcasing my skills and experience.', 'https://github.com/a-sysio/CV', 'in progres...', 'React, Flask, HTML/CSS, Python, MySQL, Docker');

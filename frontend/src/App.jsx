@@ -76,19 +76,19 @@ function App() {
 
       case 'projects':
         return (
-          <>
-          <Section id="languages" title="Languages">
-            <div className='timeline-scroll'>
-              <Languages items={data?.languages || []} />
-            </div>
-          </Section>
-          
-          <Section id="projects" title="Projects">
-            <div className="timeline-scroll">
-              <Projects projects={data?.projects || []} />
-            </div>
-          </Section>
-          </>
+          <div className="projects-tab">
+            <Section id="languages" title="Languages">
+              <div className="timeline-scroll">
+                <Languages items={data?.languages || []} />
+              </div>
+            </Section>
+
+            <Section id="projects" title="Projects">
+              <div className="timeline-scroll">
+                <Projects projects={data?.projects || []} />
+              </div>
+            </Section>
+          </div>
         )
 
       case 'contact':
