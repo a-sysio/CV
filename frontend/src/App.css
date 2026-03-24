@@ -658,3 +658,15 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (min-width: 1600px) {
+  .projects-tab .timeline-scroll {
+    max-height: 40vh;
+  }
+
+  .timeline-scroll{
+    max-height: 56vh;
+  }
+}
+
+
