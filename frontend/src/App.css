@@ -843,4 +843,18 @@
   .timeline-scroll{
     max-height: 60vh;
   }
+  
+  .nav-arrows button {
+    padding: 14px 16px;  /* było 10px 12px */
+    font-size: 18px;  /* dla lepszej czytelności */
+  }
+
+  .nav-arrows button .MuiSvgIcon-root {
+    font-size: 32px !important;
+  }
+  
+  .nav-arrows button .MuiSvgIcon-fontSizeSmall {
+    font-size: 28px !important;
+  }
+  
 }
