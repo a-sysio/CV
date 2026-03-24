@@ -669,4 +669,178 @@
   }
 }
 
+@media (min-width: 2000px) {
+  .main-card {
+    width: 90vw;
+    max-width: 2100px;  /* było 1900px */
+    min-height: 1062px;  /* było 850px (850 * 1.25) */
+  }
 
+  .hero-main {
+    flex: 0 1 auto;
+    max-width: 50%;
+  }
+  
+  .hero-about {
+    gap: 5vw;
+  }
+  
+  .hero-main h1 {
+    font-size: clamp(60px, 3vw, 70px);  /* było clamp(48px, 3vw, 56px) */
+  }
+  
+  .title {
+    font-size: clamp(28px, 1.3vw, 35px);  /* było clamp(22px, 1.3vw, 28px) */
+  }
+  
+  .hero-photo {
+    flex: 0 0 clamp(400px, 40vw, 562px);  /* było clamp(320px, 32vw, 450px) */
+    width: clamp(400px, 40vw, 562px);
+  }
+  
+  .mini-avatar {
+    width: 300px;  /* było 240px */
+    height: 300px;
+  }
+  
+  .sidebar {
+    padding: 175px 106px 188px;  /* było 140px 85px 150px */
+    justify-content: center;
+  }
+  
+  .content {
+    padding: 35px 0 35px 40px;  /* było 28px 0 28px 32px */
+  }
+  
+  .section {
+    padding: 35px;  /* było 28px */
+    margin: 30px 0 18px;  /* było 24px 0 14px */
+  }
+  
+  .section h2 {
+    font-size: 35px;  /* było 28px */
+  }
+  
+  .eyebrow {
+    font-size: 18px;  /* było 14px */
+  }
+  
+  .subtitle {
+    font-size: 22px;  /* było 18px */
+  }
+  
+  .card {
+    padding: 30px;  /* było 24px */
+  }
+  
+  .card h3 {
+    font-size: 30px;  /* było 24px */
+  }
+  
+  .hero-nav {
+    gap: 40px;  /* było 32px */
+  }
+  
+  .hero-card {
+    padding: 50px 35px;  /* było 40px 28px */
+    font-size: 32px;  /* było 26px */
+  }
+  
+  .tool {
+    font-size: 45px;  /* było 36px */
+  }
+  
+  .stat-card {
+    padding: 20px 22px;  /* było 16px 18px */
+  }
+  
+  .stat-value {
+    font-size: 30px;  /* było 24px */
+  }
+  
+  .tag {
+    padding: 10px 20px;  /* było 8px 16px */
+    font-size: 17px;  /* było 14px */
+  }
+
+  .projects-tab .timeline-scroll {
+    max-height: 35vh;
+  }
+
+  .timeline-scroll {
+    max-height: 48vh;
+  }
+
+  .body {
+    font-size: 18px;  /* z domyślnego ~16px */
+  }
+  
+  .hero-main .body {
+    font-size: 21px;
+  }
+  
+  /* Sidebar */
+  .sidebar-name {
+    font-size: 28px;  /* było 23px */
+  }
+  
+  .sidebar-role {
+    font-size: 20px;  /* było 12px */
+  }
+  
+  .sidebar-contact {
+    font-size: 20px;  /* było 14px */
+  }
+  
+  .sidebar-btn {
+    font-size: 120%;  /* było 110% */
+  }
+  
+  /* Tekst opcjonalnie */
+  .eyebrow {
+    font-size: 16px;  /* było 18px - może być mniejszy */
+  }
+
+  .main-card {
+    grid-template-columns: 400px 1fr;  /* było 320px - 320 * 1.25 = 400px */
+  }
+
+  .toolbar {
+    width: 90px;  /* było 72px - 72 * 1.25 = 90px */
+  }
+
+  .social-circle {
+    width: 48px;  /* było 36px */
+    height: 48px;
+    font-size: 16px;  /* było 12px */
+  }
+
+  .body {
+    font-size: 21px;  /* było 18px - teraz takie jak w About Me */
+  }
+  
+  /* jeśli potrzebujesz tylko dla kart */
+  .card .body {
+    font-size: 21px;
+  }
+
+  .contact{
+    font-size: 21px;
+  }
+
+  .project-card{
+    font-size: 21px;
+  }
+
+  .tag{
+    font-size: 21px;
+  }
+
+  .projects-tab .timeline-scroll {
+    max-height: 42vh;
+  }
+
+  .timeline-scroll{
+    max-height: 60vh;
+  }
+}
