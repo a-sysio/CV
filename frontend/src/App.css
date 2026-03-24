@@ -672,8 +672,8 @@
 @media (min-width: 2000px) {
   .main-card {
     width: 90vw;
-    max-width: 2100px;  /* było 1900px */
-    min-height: 1062px;  /* było 850px (850 * 1.25) */
+    max-width: 2100px;  
+    min-height: 1062px;  
   }
 
   .hero-main {
@@ -686,81 +686,81 @@
   }
   
   .hero-main h1 {
-    font-size: clamp(60px, 3vw, 70px);  /* było clamp(48px, 3vw, 56px) */
+    font-size: clamp(60px, 3vw, 70px);  
   }
   
   .title {
-    font-size: clamp(28px, 1.3vw, 35px);  /* było clamp(22px, 1.3vw, 28px) */
+    font-size: clamp(28px, 1.3vw, 35px);  
   }
   
   .hero-photo {
-    flex: 0 0 clamp(400px, 40vw, 562px);  /* było clamp(320px, 32vw, 450px) */
+    flex: 0 0 clamp(400px, 40vw, 562px);  
     width: clamp(400px, 40vw, 562px);
   }
   
   .mini-avatar {
-    width: 300px;  /* było 240px */
+    width: 300px;  
     height: 300px;
   }
   
   .sidebar {
-    padding: 175px 106px 188px;  /* było 140px 85px 150px */
+    padding: 175px 106px 188px;  
     justify-content: center;
   }
   
   .content {
-    padding: 35px 0 35px 40px;  /* było 28px 0 28px 32px */
+    padding: 35px 0 35px 40px;  
   }
   
   .section {
-    padding: 35px;  /* było 28px */
-    margin: 30px 0 18px;  /* było 24px 0 14px */
+    padding: 35px;  
+    margin: 30px 0 18px;  
   }
   
   .section h2 {
-    font-size: 35px;  /* było 28px */
+    font-size: 35px;  
   }
   
   .eyebrow {
-    font-size: 18px;  /* było 14px */
+    font-size: 18px;  
   }
   
   .subtitle {
-    font-size: 22px;  /* było 18px */
+    font-size: 22px;  
   }
   
   .card {
-    padding: 30px;  /* było 24px */
+    padding: 30px;  
   }
   
   .card h3 {
-    font-size: 30px;  /* było 24px */
+    font-size: 30px;  
   }
   
   .hero-nav {
-    gap: 40px;  /* było 32px */
+    gap: 40px;  
   }
   
   .hero-card {
-    padding: 50px 35px;  /* było 40px 28px */
-    font-size: 32px;  /* było 26px */
+    padding: 50px 35px;  
+    font-size: 32px;  
   }
   
   .tool {
-    font-size: 45px;  /* było 36px */
+    font-size: 45px;  
   }
   
   .stat-card {
-    padding: 20px 22px;  /* było 16px 18px */
+    padding: 20px 22px;  
   }
   
   .stat-value {
-    font-size: 30px;  /* było 24px */
+    font-size: 30px;  
   }
   
   .tag {
-    padding: 10px 20px;  /* było 8px 16px */
-    font-size: 17px;  /* było 14px */
+    padding: 10px 20px;  
+    font-size: 17px;  
   }
 
   .projects-tab .timeline-scroll {
@@ -772,54 +772,54 @@
   }
 
   .body {
-    font-size: 18px;  /* z domyślnego ~16px */
+    font-size: 18px;  
   }
   
   .hero-main .body {
     font-size: 21px;
   }
   
-  /* Sidebar */
+  
   .sidebar-name {
-    font-size: 28px;  /* było 23px */
+    font-size: 28px;  
   }
   
   .sidebar-role {
-    font-size: 20px;  /* było 12px */
+    font-size: 20px;  
   }
   
   .sidebar-contact {
-    font-size: 20px;  /* było 14px */
+    font-size: 20px;  
   }
   
   .sidebar-btn {
-    font-size: 120%;  /* było 110% */
+    font-size: 120%;  
   }
   
-  /* Tekst opcjonalnie */
+  
   .eyebrow {
-    font-size: 16px;  /* było 18px - może być mniejszy */
+    font-size: 16px;  
   }
 
   .main-card {
-    grid-template-columns: 400px 1fr;  /* było 320px - 320 * 1.25 = 400px */
+    grid-template-columns: 400px 1fr;  
   }
 
   .toolbar {
-    width: 90px;  /* było 72px - 72 * 1.25 = 90px */
+    width: 90px;  
   }
 
   .social-circle {
-    width: 48px;  /* było 36px */
+    width: 48px;  
     height: 48px;
-    font-size: 16px;  /* było 12px */
+    font-size: 16px;  
   }
 
   .body {
-    font-size: 21px;  /* było 18px - teraz takie jak w About Me */
+    font-size: 21px;  
   }
   
-  /* jeśli potrzebujesz tylko dla kart */
+  
   .card .body {
     font-size: 21px;
   }
@@ -845,8 +845,8 @@
   }
   
   .nav-arrows button {
-    padding: 14px 16px;  /* było 10px 12px */
-    font-size: 18px;  /* dla lepszej czytelności */
+    padding: 14px 16px;  
+    font-size: 18px;  
   }
 
   .nav-arrows button .MuiSvgIcon-root {
